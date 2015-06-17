@@ -9,3 +9,9 @@ textarea {
 form > input {
     display: block;
 }
+
+form {
+    padding: 7px;
+    border: 1px solid #ddd;
+    width: 650px;
+}
