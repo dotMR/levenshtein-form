@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Levenshtein Form</title>
+        <link href="lf.css" rel="stylesheet" type="text/css"></link>
+        <script src="bundle.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h3>Levenshtein Form</h3>
+            <p>Input text sample below and click the 'Analyze Text' button</p>
+            <form>
+                <textarea id="sourceText" placeholder="Input Text"></textarea>
+                <input id="analyzeText" type="submit" value="Analyze Text"/>
+                <input id="reset" type="submit" value="Reset"/>
+            </form>
+            <div id="results">
+                <h3>Results</h3>
+                <ul id="resultsList">
+                    <!-- rendered dynamically by JS -->
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

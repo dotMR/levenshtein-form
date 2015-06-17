@@ -24,14 +24,7 @@ function analyzeText(input) {
     console.log(input);
     var results = analyzer.getStats();
     results.forEach( function(stat) {
-        var word = stat.getWord();
-        var count = stat.getCount();
-        var print = word + ' (' + count + ')';
-
-        if (stat.hasSimilar()) {
-            print = print + ' (' + stat.similar.join(', ') + ')';
-        }
-        console.log(print);
+        console.log(stat.prettyPrint());
     });
     console.log('');
 }
