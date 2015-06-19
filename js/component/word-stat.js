@@ -1,4 +1,6 @@
-function WordStat(word) {
+var WordStat = WordStat || {};
+
+WordStat = function(word) {
     this.word_ = word;
     this.occurrences_ = 1;
     this.similar_ = [];
@@ -20,6 +22,14 @@ WordStat.prototype.getSimilar = function() {
     return this.similar_;
 }
 
+WordStat.prototype.getSimilarPretty = function() {
+    if (this.similar_.length > 0) {
+        return this.getSimilar().join(', ');
+    } else {
+        return '-';
+    }
+}
+
 WordStat.prototype.getWord = function() {
     return this.word_;
 }
@@ -36,5 +46,3 @@ WordStat.prototype.prettyPrint = function() {
 
     return print;
 }
-
-module.exports = WordStat;

@@ -1,14 +1,14 @@
 var LevenshteinTools = {
 
-    areWordsSimilar: function(a, b) {
+    areWordsSimilar: function(a, b, editDistance) {
         var lengthDiff = Math.abs(a.length - b.length);
-        if (lengthDiff <= 1) {
+        if (lengthDiff <= editDistance) {
 
             // assume a is longer than b
             var main = a;
             var sub = b;
 
-            // validate lengths
+            // validate and switch if necessary
             if (b.length > a.length) {
                main = b;
                sub = a;
@@ -23,7 +23,7 @@ var LevenshteinTools = {
                 if (main.charAt(i) != sub.charAt(i)) {
                     replacements = replacements + 1;
 
-                    if (replacements > 1) {
+                    if (replacements > editDistance) {
                         return false;
                     }
                 }
@@ -35,5 +35,3 @@ var LevenshteinTools = {
         return false;
     }
 };
-
-module.exports = LevenshteinTools;

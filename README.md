@@ -12,4 +12,14 @@ Word Words Wor word => Word (1) (Words, Wor, word) //"Word" is the first appeara
 Samson Samso samson => Samson (1) (Samso, samson)
 
 ####Usage
-node test.js
+compile JSX
+
+    jsx --watch src/ build/
+
+
+    Count the appearance of any word in the text and determine if any similar words exist.
+
+    Output a list of the distinct words with a count of exact matches as well as list any words similar to it. Similarities are excluded from the list and not counted.
+
+    A word is deemed similar to an already encountered word if the Levenshtein distance between the words is not larger than the value provided (Default 1)
+

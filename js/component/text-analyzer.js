@@ -1,17 +1,32 @@
-var LDTools = require('levenshtein-tools')
-var WordStat = require('word-stat');
+var TextAnalyzer = TextAnalyzer || {};
 
-function TextAnalyzer(input) {
+TextAnalyzer = function(input, distance, caseSensitive) {
+    // config case sensitive search
+    this.caseSensitive = caseSensitive;
+
+    // edit distance
+    this.editDistance = distance;
+
+    // cache of words
     this.keys = [];
+
+    // array of word metadata
     this.stats = [];
 
     // sanitize input
-    var s = input.replace(/[^A-Z-a-z-_0-9 ]/g, '');
-    var words = s.split(' ');
+    var s = input.replace(/\n/g, ' ');
+    s = s.replace(/[^A-Z-a-z-_0-9]/g, ' ').trim();
 
+    if (!this.caseSensitive) {
+        s = s.toLowerCase();
+    }
+
+    var words = s.split(' ');
     var self = this;
     words.forEach( function(current) {
-        self.analyze(current);
+        if (current) {
+            self.analyze(current);
+        }
     });
 }
 
@@ -46,7 +61,7 @@ TextAnalyzer.prototype.findSimilar = function(word) {
     for (var j=0;j<this.stats.length;j++) {
         var current = this.stats[j];
 
-        if (LDTools.areWordsSimilar(word, current.getWord())) {
+        if (LevenshteinTools.areWordsSimilar(word, current.getWord(), this.editDistance)) {
             return current;
         }
     }
@@ -57,5 +72,3 @@ TextAnalyzer.prototype.findSimilar = function(word) {
 TextAnalyzer.prototype.getStats = function() {
     return this.stats;
 }
-
-module.exports = TextAnalyzer;

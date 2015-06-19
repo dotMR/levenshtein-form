@@ -19,7 +19,7 @@ function processData(input) {
 }
 
 function analyzeText(input) {
-    var analyzer = new TextAnalyzer(input);
+    var analyzer = new TextAnalyzer(input, 1, true);
 
     console.log(input);
     var results = analyzer.getStats();
