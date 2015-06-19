@@ -9,6 +9,7 @@ var TextInputForm = React.createClass({
 
     getInitialState: function() {
         return {
+            buttonEnabed: false,
             caseSensitive: true,
             sourceText: '',
             textInvalid: false
@@ -16,16 +17,42 @@ var TextInputForm = React.createClass({
     },
 
     onTextChange_: function(event) {
+        var value = event.target.value;
+        var buttonEnabed = false;
+
+        if (value) {
+            buttonEnabed = true;
+        }
+
         this.setState({
+            buttonEnabed: buttonEnabed,
             sourceText: event.target.value,
             textInvalid: false
         });
     },
 
     onCaseChange_: function(event) {
+        var buttonEnabed = false;
+        if (this.state.sourceText) {
+            buttonEnabed = true;
+        }
+
         this.setState({
+            buttonEnabed: buttonEnabed,
             caseSensitive: !this.state.caseSensitive
         });
+    },
+
+    handleClearClick_: function(event) {
+        event.preventDefault();
+
+        this.setState({
+            buttonEnabed: false,
+            sourceText: "",
+            textInvalid: false
+        });
+
+        this.props.onTextSubmit("", this.state.caseSensitive);
     },
 
     handleSubmitClick_: function(event) {
@@ -35,18 +62,31 @@ var TextInputForm = React.createClass({
             this.invalidateForm_();
         } else {
             this.props.onTextSubmit(this.state.sourceText, this.state.caseSensitive);
+            this.setState({
+                buttonEnabed: false
+            });
         }
     },
 
     invalidateForm_: function() {
         this.setState({
+            buttonEnabed: false,
             textInvalid: true
         });
     },
 
+    getSubmitButtonClasses_: function() {
+        var classes = "btn waves-effect waves-light";
+        if (!this.state.buttonEnabed) {
+            classes = classes.concat(' disabled');
+        }
+
+        return classes;
+    },
+
     getTextAreaClasses_: function() {
         var classes = "materialize-textarea";
-        if(this.state.textInvalid) {
+        if (this.state.textInvalid) {
             classes = classes.concat(' invalid');
         }
 
@@ -75,9 +115,12 @@ var TextInputForm = React.createClass({
                         </label>
                     </div>
                     <div>
+                        <a
+                            className="waves-effect waves-teal btn-flat"
+                            onClick={ this.handleClearClick_ }>CLEAR</a>
                         <button
                             id="analyzeText"
-                            className="btn waves-effect waves-light"
+                            className={ this.getSubmitButtonClasses_() }
                             name="action"
                             type="submit"
                             onClick={ this.handleSubmitClick_ }>ANALYZE</button>
