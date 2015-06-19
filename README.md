@@ -1,6 +1,5 @@
+####Exercise
 
-
-####Objective
 In this task you should create a script, that counts the appearance of any word in a text and its similar.
 
 The workflow should be like that

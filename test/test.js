@@ -3,17 +3,6 @@
 var assert = require("assert");
 var TextAnalyzer = require('./../js/component/text-analyzer');
 
-// function analyzeText(input) {
-//     var analyzer = new TextAnalyzer(input, 1, true);
-
-//     console.log(input);
-//     var results = analyzer.getStats();
-//     results.forEach( function(stat) {
-//         console.log(stat.prettyPrint());
-//     });
-//     console.log('');
-// }
-
 describe('Text Analyzer', function(){
     var input1 = "Word Words Wor word";
     describe(input1, function(){
@@ -93,11 +82,11 @@ describe('Text Analyzer', function(){
         })
     })
 
-    describe("Wer wem wen wer x 3 - case SENSITIVE", function(){
+    describe("Wer wem wen wer x 3 - CASE SENSITIVE", function(){
         var analyzer = new TextAnalyzer(input3, 1, true);
         var stats = analyzer.getStats();
 
-        it('should return 2 stat', function(){
+        it('should return 2 stats', function(){
             assert.equal(2, stats.length);
         })
 
