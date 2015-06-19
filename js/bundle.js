@@ -19873,7 +19873,7 @@ var TextInputForm = React.createClass({
     handleSubmitClick_: function(event) {
         event.preventDefault();
 
-        if (!this.state.sourceText) {
+        if (!this.state.sourceText && this.state.buttonEnabed) {
             this.invalidateForm_();
         } else {
             this.props.onTextSubmit(this.state.sourceText, this.state.caseSensitive);
