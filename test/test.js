@@ -1,9 +1,9 @@
 'use strict';
 
-var TextAnalyzer = require('text-analyzer');
+var FileReader = require('./file-reader');
+FileReader.init('test-input.txt', processData);
 
-var reader = require('file-reader');
-reader.init('test-input.txt', processData);
+var TextAnalyzer = require('./../js/component/text-analyzer');
 
 function parseBase10(s) {
     return parseInt(s, 10);

@@ -1,3 +1,5 @@
+
+
 ####Objective
 In this task you should create a script, that counts the appearance of any word in a text and its similar.
 
@@ -11,15 +13,27 @@ A similarity is given if a word is similar to an already found word by a Levensh
 Word Words Wor word => Word (1) (Words, Wor, word) //"Word" is the first appearance and all other words are similar by levenshtein <= 1
 Samson Samso samson => Samson (1) (Samso, samson)
 
+####Uses
+
+- JavaScript
+- React
+- MaterializeCSS
+- Node (testing)
+
+
 ####Usage
-compile JSX
 
-    jsx --watch src/ build/
+To compile the JSX into JS components
 
+    $: cd /levenshtein-form/js
+    $: jsx --watch react-components/ build/
 
-    Count the appearance of any word in the text and determine if any similar words exist.
+To bundle the JS
 
-    Output a list of the distinct words with a count of exact matches as well as list any words similar to it. Similarities are excluded from the list and not counted.
+    $ cd /levenshtein-form/js
+    $ browserify app.js -o bundle.js
 
-    A word is deemed similar to an already encountered word if the Levenshtein distance between the words is not larger than the value provided (Default 1)
+To run tests
 
+    $ cd /levenshtein-form/test
+    node test.js

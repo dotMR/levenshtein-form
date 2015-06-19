@@ -1,3 +1,8 @@
+var React = require('react');
+var TextAnalyzer = require('./../component/text-analyzer');
+var TextInputForm = require('./text-input-form');
+var WordList = require('./word-list');
+
 var Controller = React.createClass({
     displayName: 'controller',
 
@@ -71,5 +76,7 @@ var Controller = React.createClass({
         );
     }
 });
+
+module.exports = Controller;
 
 

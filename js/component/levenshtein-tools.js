@@ -35,3 +35,5 @@ var LevenshteinTools = {
         return false;
     }
 };
+
+module.exports = LevenshteinTools;

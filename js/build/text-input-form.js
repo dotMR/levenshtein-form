@@ -1,3 +1,5 @@
+var React = require('react');
+
 var TextInputForm = React.createClass({
     displayName: 'text-input-form',
 
@@ -85,3 +87,5 @@ var TextInputForm = React.createClass({
         );
     }
 });
+
+module.exports = TextInputForm;

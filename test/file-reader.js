@@ -1,7 +1,6 @@
 var fs = require('fs');
 
-module.exports = {
-
+var FileReader = {
     init: function(filepath, callback) {
         if (!callback) {
             throw Error("callback is required!");
@@ -19,3 +18,5 @@ module.exports = {
         });
     }
 };
+
+module.exports = FileReader;

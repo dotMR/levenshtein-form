@@ -11,16 +11,16 @@ var WordList = React.createClass({
     render: function() {
         var items = this.props.wordStats.map( function(stat) {
             return (
-                React.createElement(WordStatView, {
-                    key:  stat.getWord(), 
-                    stat:  stat })
+                <WordStatView
+                    key={ stat.getWord() }
+                    stat={ stat }/>
             );
         });
 
         return (
-            React.createElement("ul", {id: "resultsList", className: "collection"}, 
-                 items 
-            )
+            <ul id="resultsList" className="collection">
+                { items }
+            </ul>
         );
     }
 });

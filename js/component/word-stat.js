@@ -1,6 +1,4 @@
-var WordStat = WordStat || {};
-
-WordStat = function(word) {
+function WordStat(word) {
     this.word_ = word;
     this.occurrences_ = 1;
     this.similar_ = [];
@@ -46,3 +44,5 @@ WordStat.prototype.prettyPrint = function() {
 
     return print;
 }
+
+module.exports = WordStat;

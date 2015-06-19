@@ -1,6 +1,7 @@
-var TextAnalyzer = TextAnalyzer || {};
+var LevenshteinTools = require('./levenshtein-tools')
+var WordStat = require('./word-stat');
 
-TextAnalyzer = function(input, distance, caseSensitive) {
+function TextAnalyzer(input, distance, caseSensitive) {
     // config case sensitive search
     this.caseSensitive = caseSensitive;
 
@@ -72,3 +73,5 @@ TextAnalyzer.prototype.findSimilar = function(word) {
 TextAnalyzer.prototype.getStats = function() {
     return this.stats;
 }
+
+module.exports = TextAnalyzer;
