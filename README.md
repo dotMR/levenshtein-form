@@ -35,4 +35,4 @@ To bundle the JS
 To run tests
 
     $ cd /levenshtein-form/test
-    mocha
+    $ mocha
