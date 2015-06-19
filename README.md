@@ -18,7 +18,7 @@ Samson Samso samson => Samson (1) (Samso, samson)
 - JavaScript
 - React
 - MaterializeCSS
-- Node (testing)
+- Node/Mocha (testing)
 
 
 ####Usage
@@ -36,4 +36,4 @@ To bundle the JS
 To run tests
 
     $ cd /levenshtein-form/test
-    node test.js
+    mocha
